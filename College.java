@@ -143,6 +143,5 @@ public class College extends JFrame {
 		contentPane.add(btnNewButton);
 		btnNewButton_2.setBounds(90,220,97,23);
 		contentPane.add(btnNewButton_2);
-		System.out.println("지혜짱짱");
 	}
 }
