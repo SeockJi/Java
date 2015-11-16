@@ -40,34 +40,34 @@ public class College extends JFrame {
 	 College() {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 286, 294);
-		setTitle("등급 입력기");
+		setTitle("�벑湲� �엯�젰湲�");
 		contentPane = new JPanel();
 		contentPane.setBackground(Color.green);
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
 
-		JLabel lblNewLabel = new JLabel("국어");
+		JLabel lblNewLabel = new JLabel("援��뼱");
 		lblNewLabel.setBounds(27, 26, 57, 15);
 		contentPane.add(lblNewLabel);
 
-		JLabel lblNewLabel_1 = new JLabel("영어");
+		JLabel lblNewLabel_1 = new JLabel("�쁺�뼱");
 		lblNewLabel_1.setBounds(27, 51, 57, 15);
 		contentPane.add(lblNewLabel_1);
 
-		JLabel lblNewLabel_2 = new JLabel("수학");
+		JLabel lblNewLabel_2 = new JLabel("�닔�븰");
 		lblNewLabel_2.setBounds(27, 76, 57, 15);
 		contentPane.add(lblNewLabel_2);
 
-		JLabel lblNewLabel_3 = new JLabel("탐구(1)");
+		JLabel lblNewLabel_3 = new JLabel("�깘援�(1)");
 		lblNewLabel_3.setBounds(27, 101, 57, 15);
 		contentPane.add(lblNewLabel_3);
 
-		JLabel lblNewLabel_4 = new JLabel("탐구(2)");
+		JLabel lblNewLabel_4 = new JLabel("�깘援�(2)");
 		lblNewLabel_4.setBounds(27, 126, 57, 15);
 		contentPane.add(lblNewLabel_4);
 
-		JLabel lblNewLabel_5 = new JLabel("등급");
+		JLabel lblNewLabel_5 = new JLabel("�벑湲�");
 		lblNewLabel_5.setBounds(27, 190, 57, 15);
 		contentPane.add(lblNewLabel_5);
 
@@ -109,8 +109,8 @@ public class College extends JFrame {
 		lblNewLabel_7.setBounds(117, 190, 100, 15);
 		contentPane.add(lblNewLabel_7);
 
-		JButton btnNewButton = new JButton("확인");
-		JButton btnNewButton_2 = new JButton("검색");	
+		JButton btnNewButton = new JButton("�솗�씤");
+		JButton btnNewButton_2 = new JButton("寃��깋");	
 		
 		btnNewButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
@@ -126,8 +126,8 @@ public class College extends JFrame {
 					result=avr;
 					lblNewLabel_6.setText("" + avr);
 				} catch (Exception e1) {
-					lblNewLabel_5.setText("정수");
-					lblNewLabel_7.setText("정수");
+					lblNewLabel_5.setText("�젙�닔");
+					lblNewLabel_7.setText("�젙�닔");
 				}
 			}
 		});
@@ -143,5 +143,6 @@ public class College extends JFrame {
 		contentPane.add(btnNewButton);
 		btnNewButton_2.setBounds(90,220,97,23);
 		contentPane.add(btnNewButton_2);
+		System.out.println("지혜짱짱");
 	}
 }
