@@ -1,4 +1,4 @@
-package Project;
+﻿package Project;
 
 import java.awt.Choice;
 import java.awt.Color;
@@ -40,26 +40,21 @@ public class college_db {
 			Statement stmt2 = conn.createStatement();
 			Statement stmt3 = conn.createStatement();
 			// 쿼리문장이 실행된 결과를 ResultSet 객체의 참조변수에 담는다.
-			String Query1 = "select * from "  + college + " where grade between "+(result+1.1)+" AND " + (result+3.0) + " order by grade";
-			String Query2 = "select * from "  + college + " where grade between "+(result-1.0)+" AND " + (result+1.0) + " order by grade";
-			String Query3 = "select * from "  + college + " where grade between "+(result-3.0)+" AND " + (result-1.1) + " order by grade";
-			
-			System.out.println(Query1);
-			System.out.println(Query2);
-			System.out.println(Query3);
+			String Query1 = "select * from "  + college + " where grade between "+(result+1.1)+" AND " + (result+3.0) + " order by department";
+			String Query2 = "select * from "  + college + " where grade between "+(result-1.0)+" AND " + (result+1.0) + " order by department";
+			String Query3 = "select * from "  + college + " where grade between "+(result-10.0)+" AND " + (result-1.1) + " order by department";
 			
 			ResultSet rs1 = stmt.executeQuery(Query1);
 			ResultSet rs2 = stmt2.executeQuery(Query2);
 			ResultSet rs3 = stmt3.executeQuery(Query3);
-			
 			// beforeFirst() : rs의 위치를 시작위치로 이동
 			rs1.beforeFirst();
 			rs2.beforeFirst();
 			rs3.beforeFirst();
-
+			//rs4.beforeFirst();
+			String str= null;
 			// next() : rs의 위치를 다음위치로 이동 자료의 끝이면 false로 만둠
 				while (rs1.next()) {
-					System.out.println(rs1.getString("department") + " " + rs1.getString("grade"));
 					up.add(rs1.getString("department") + "/" + rs1.getString("grade"));
 					//one.add(rs1.getString("department") + "/" + rs1.getString("grade"));
 				}
@@ -75,10 +70,6 @@ public class college_db {
 				vt_result[0]=up;
 				vt_result[1]=safe;
 				vt_result[2]=down;
-
-				System.out.println(vt_result[0]);
-				System.out.println(vt_result[1]);
-				System.out.println(vt_result[2]);
 				
 				// while end
 		} catch (ClassNotFoundException e) {
