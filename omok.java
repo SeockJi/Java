@@ -1,4 +1,4 @@
-package Project;
+﻿package Project;
 
 import java.awt.Color;
 import java.awt.Graphics;
@@ -38,7 +38,6 @@ class omok extends JFrame implements MouseListener {
 	omok() {
 		// Event Handler를 등록한다.
 		addMouseListener(this);
-		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
 		setVisible(true); 
 		Insets insets = getInsets(); // 여백값을 얻는다.
@@ -125,17 +124,15 @@ class omok extends JFrame implements MouseListener {
 		y = (y - Y0 + LINE_WIDTH / 2) / LINE_WIDTH * LINE_WIDTH + Y0;
 
 		Insets insets = getInsets();
-		System.out.println((x - insets.left) / LINE_WIDTH - 1);
-		System.out.println((y - insets.top) / LINE_WIDTH - 1);
 		stoneX = (x - insets.left) / LINE_WIDTH - 1;
 		stoneY = (y - insets.top) / LINE_WIDTH - 1;
 		// System.out.println(arrI + ":" + arrJ);
 
-		// 3. 돌의 크기의 절반을 빼야 클릭한 곳에 돌이 그려진다.
+		// 3. 돌의 크기의 절반을 뺀다 그리기위해
 		x -= STONE_SIZE / 2;
 		y -= STONE_SIZE / 2;
 
-		// 4. 눌러진 버튼이 마우스 왼쪽 버튼이면 돌을 그린다
+		// 4. 눌러진 버튼이 마우스 왼쪽 버튼고 돌의 자리가 NONE이라면 돌을 그림
 		if (e.getModifiersEx() == MouseEvent.BUTTON1_DOWN_MASK && stones[stoneX][stoneY] == NONE) {
 			// 흑의 차례이면 검은 돌을 그리고
 			if (turn == BLACK) {
