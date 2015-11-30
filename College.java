@@ -35,11 +35,12 @@ public class College extends JFrame{
 	JPanel dep = new JPanel(); 
 	JPanel panel = new JPanel();
 	
-	JPanel up 	  = new JPanel();
-	JPanel safe   = new JPanel();
-	JPanel down   = new JPanel();
+	JPanel subject  = new JPanel();
+	JPanel up 	    = new JPanel();
+	JPanel safe     = new JPanel();
+	JPanel down     = new JPanel();
 	
-	JPanel up2 	  = new JPanel();
+	JPanel up2 	   = new JPanel();
 	JPanel safe2   = new JPanel();
 	JPanel down2   = new JPanel();
 	
@@ -57,6 +58,7 @@ public class College extends JFrame{
 	JMenuItem exit       = new JMenuItem("exit");
 	JMenuItem game		 = new JMenuItem("game");
 	ImageIcon icon;
+
 	College()
 	{
 		mb.add(menu);
@@ -98,17 +100,19 @@ public class College extends JFrame{
 			}
 		}	
 	}
-	
+
+	//대학별로 찾을수 있게 하는 메서드
 	void col_one() {
-		
+		//프레임창을 종료할수 있게한다
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setTitle("대학");
 		setBounds(500,100,286,324);
-		col.setBackground(Color.green);
+		//판넬을 프레임에 붙이는 작업
+		col.setBackground(Color.LIGHT_GRAY);
 		add(col);
 		col.setLayout(null);
 
-		// ///////////////////////////////////
+		//초이스를 사용함으로써 선택바를 만들수 있음
 		Choice school = new Choice();
 		JLabel Col = new JLabel("대학선택");
 		school.addItem("Konkuk");
@@ -128,9 +132,10 @@ public class College extends JFrame{
 		school.addItem("yeungnam");
 		school.addItem("yeungnam_of_science(technical)");
 		school.setBounds(117, 5, 116, 21);
+		//초이스 선택바를 판넬에 붙여주는 작업
 		col.add(school);
-		// //////////////////////////////////
-
+		
+		//라벨을 사용하여 값을 만들고 그 라벨을 판넬에 붙여주는 작업 이하 동일
 		JLabel lblNewLabel_0 = new JLabel("대학선택");
 		lblNewLabel_0.setBounds(27, 10, 57, 15);
 		col.add(lblNewLabel_0);
@@ -163,6 +168,7 @@ public class College extends JFrame{
 		lblNewLabel_7.setBounds(117, 190, 57, 15);
 		col.add(lblNewLabel_7);
 
+		//위에서 배열값으로 만든 텍스트 필드를 하나씩 객체를 생성하여 위치를 정하고 판넬에 붙여주는 작업
 		textField[0] = new JTextField();
 		textField[0].setBounds(117, 33, 116, 21);
 		col.add(textField[0]);
@@ -192,10 +198,20 @@ public class College extends JFrame{
 		lblNewLabel_8.setBounds(117, 2000, 100, 15);
 		col.add(lblNewLabel_8);
 
+		//버튼을 만듬 
 		JButton btnNewButton = new JButton("확인");
 		JButton btnNewButton_2 = new JButton("검색");
 		JButton btnNewButton_3 = new JButton("초기화");
-
+	
+		//버튼의 사이즈와 위치를 정해준 후 판넬에 붙여준다.
+		btnNewButton.setBounds(136, 166, 97, 23);
+		col.add(btnNewButton);
+		btnNewButton_2.setBounds(150, 230, 97, 23);
+		col.add(btnNewButton_2);
+		btnNewButton_3.setBounds(10, 230, 97, 23);
+		col.add(btnNewButton_3);
+		
+		//각각의 액션리스너 메서드를 만들었다 클래스를 이용하여 만드는 것도 가능하다
 		school.addItemListener(new ItemListener() {
 			public void itemStateChanged(ItemEvent e) {
 				String choice = e.getItem().toString();
@@ -252,6 +268,8 @@ public class College extends JFrame{
 				}
 			}
 		});
+		
+		//확인을 누르게 되면 db에 저장된 값들을 불러오는 작업이다.
 		btnNewButton_2.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				college_db m = new college_db();
@@ -260,6 +278,8 @@ public class College extends JFrame{
 				col_rst(vt_result);
 			}
 		});
+		
+		//초기화를 위해 만든 메서드이다 .
 		btnNewButton_3.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				for (int iCount = 0; iCount < 5; iCount++) {
@@ -268,19 +288,14 @@ public class College extends JFrame{
 				lblNewLabel_7.setText("--");
 			}
 		});
-	
-		btnNewButton.setBounds(136, 166, 97, 23);
-		col.add(btnNewButton);
-		btnNewButton_2.setBounds(150, 230, 97, 23);
-		col.add(btnNewButton_2);
-		btnNewButton_3.setBounds(10, 230, 97, 23);
-		col.add(btnNewButton_3);
 		
 		up.setVisible(false);
 		safe.setVisible(false);
 		down.setVisible(false);
 		panel.setVisible(false);
 		dep.setVisible(false);
+		subject.setVisible(false);
+		
 		col.setVisible(true);
 		
 	}
@@ -428,6 +443,7 @@ public class College extends JFrame{
 		down.setVisible(false);
 		panel.setVisible(false);
 		col.setVisible(false);
+		subject.setVisible(false);
 		
 		dep.setVisible(true);
 	}
@@ -439,6 +455,10 @@ public class College extends JFrame{
 		setTitle("you Serch College");	
 		add(panel);
 		
+		//이미지를 넣기위해 이미지아이콘이란 객체를생성하여 절대경로로 이미지를 붙였다.
+		//그후 라벨을 만들어 라벨을 만들어 라벨에 이미지를 넣고 
+		//라벨을 판넬에 다시 붙여주는 식의 작업을 함
+		
 		icon = new ImageIcon("C:\\Users\\석영\\workspace\\Jsy_Projcect\\src\\img\\home.png");
 		JLabel label = new JLabel(icon);
 		panel.add(label);
@@ -446,6 +466,7 @@ public class College extends JFrame{
 		label.setLayout(null);
 		col.setVisible(false);
 		dep.setVisible(false);
+		subject.setVisible(false);
 		up.setVisible(false);
 		safe.setVisible(false);
 		down.setVisible(false);
@@ -456,14 +477,25 @@ public class College extends JFrame{
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(500, 100, 900, 700);
 		setTitle("갈수있는 학과");
-	
-		up.setBackground(Color.PINK);
-		safe.setBackground(Color.GREEN);
-		down.setBackground(Color.ORANGE);
+		
+		//판넬을 만들어 각각 사용자 크기로 만들어 프레임에 넣어줌
 		setLayout(null);
+		subject.setBackground(Color.gray);
+		up.setBackground(Color.cyan);
+		safe.setBackground(Color.white);
+		down.setBackground(Color.pink);
+		
+		subject.setLayout(null);
+		subject.setBounds(0, 0, 900, 50);
+		add(subject);
+		JLabel title = new JLabel(college + " 대 학 ");
+		title.setLayout(null);
+		title.setBounds(390,5,200,50);
+		subject.add(title);
+	
 		
 		up.setLayout(null);
-		up.setBounds(0, 0, 300, 700);
+		up.setBounds(0, 50, 300, 650);
 		add(up);
 		JLabel up_title = new JLabel("상향");
 		up_title.setLayout(null);
@@ -472,7 +504,7 @@ public class College extends JFrame{
 		
 
 		safe.setLayout(null);
-		safe.setBounds(300,0,300,700);
+		safe.setBounds(300,50,300,650);
 		add(safe);
 		JLabel safe_title = new JLabel("안정");
 		safe_title.setLayout(null);
@@ -481,13 +513,14 @@ public class College extends JFrame{
 		
 		
 		down.setLayout(null);		
-		down.setBounds(600, 0, 300, 700);
+		down.setBounds(600,50, 300, 650);
 		add(down);
 		JLabel down_title = new JLabel("하향");
 		down_title.setLayout(null);
 		down_title.setBounds(100, 10, 50, 50);
 		down.add(down_title);
 		
+		//라벨관리를 쉽게 하기 위해
 		JLabel[] one = new JLabel[vt_result[0].size()];
 		JLabel[] two = new JLabel[vt_result[1].size()];
 		JLabel[] thr = new JLabel[vt_result[2].size()];
@@ -534,6 +567,7 @@ public class College extends JFrame{
 		dep.setVisible(false);
 		panel.setVisible(false);
 		
+		subject.setVisible(true);
 		up.setVisible(true);
 		safe.setVisible(true);
 		down.setVisible(true);
@@ -616,6 +650,7 @@ public class College extends JFrame{
 			down2.add(thr[i]);
 		}
 		
+		subject.setVisible(false);
 		col.setVisible(false);
 		dep.setVisible(false);
 		panel.setVisible(false);
