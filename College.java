@@ -480,7 +480,7 @@ public class College extends JFrame{
 		
 		//판넬을 만들어 각각 사용자 크기로 만들어 프레임에 넣어줌
 		setLayout(null);
-		subject.setBackground(Color.gray);
+		subject.setBackground(Color.LIGHT_GRAY);
 		up.setBackground(Color.cyan);
 		safe.setBackground(Color.white);
 		down.setBackground(Color.pink);
