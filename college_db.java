@@ -76,7 +76,7 @@ public class college_db {
       } catch (Exception e) {
          System.out.println("해당 테이블이 존재하지 않습니다.");
       }
-      //값들 모두 리턴
+      //값들 모두 리턴함
       return vt_result;
    }
 }
